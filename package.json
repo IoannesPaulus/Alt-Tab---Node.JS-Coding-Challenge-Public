@@ -1,13 +1,21 @@
 {
   "name": "Noode.JS-Coding-Challenge",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node app.js",
     "test": "mocha --recursive"
   },
   "dependencies": {
-    "express": "~4.11.1"
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "bunyan": "^1.8.10",
+    "convict": "^3.0.0",
+    "express": "~4.11.1",
+    "express-unless": "^0.3.0",
+    "jsonwebtoken": "^7.3.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.9.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
