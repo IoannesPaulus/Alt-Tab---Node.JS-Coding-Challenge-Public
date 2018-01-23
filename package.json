@@ -1,5 +1,5 @@
 {
-  "name": "Noode.JS-Coding-Challenge",
+  "name": "node.js-coding-challenge",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,6 +19,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-ng-annotate": "^1.1.0",

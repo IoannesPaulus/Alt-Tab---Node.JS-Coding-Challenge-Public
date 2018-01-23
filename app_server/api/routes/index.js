@@ -12,8 +12,7 @@ function register(req, res, next) {
     res.status(400).json({
       error: 'E-mail field is mandatory!'
     });
-  }
-  else if (!req.body.password) {
+  } else if (!req.body.password) {
     res.status(400).json({
       error: 'Please specify a password!'
     });
@@ -36,7 +35,8 @@ function register(req, res, next) {
       } else {
         res.status(201).json({ token });
       }
-    }).catch(next);
+    })
+      .catch(next);
   }
 }
 
@@ -45,8 +45,7 @@ function login(req, res, next) {
     res.status(400).json({
       error: 'Please specify E-mail!'
     });
-  }
-  else if (!req.body.password) {
+  } else if (!req.body.password) {
     res.status(400).json({
       error: 'Please specify a password!'
     });
@@ -55,13 +54,16 @@ function login(req, res, next) {
       if (!user) {
         return [false, ''];
       }
-      return Promise.all([authService.validatePw(req.body.password, user.password), Promise.resolve(user._id)]);
+      return Promise.all([
+        authService.validatePw(req.body.password, user.password),
+        Promise.resolve(user._id)
+      ]);
     }).then(([valid, userId]) => {
       if (!valid) {
         return '';
       }
       return tokenService.jwtSign({ userId });
-    }).then(token => {
+    }).then((token) => {
       if (!token) {
         res.status(400).json({
           error: 'Wrong credentials!'
@@ -69,7 +71,8 @@ function login(req, res, next) {
       } else {
         res.status(200).json({ token });
       }
-    }).catch(next);
+    })
+      .catch(next);
   }
 }
 
@@ -89,7 +92,7 @@ function profile(req, res, next) {
       error: 'Not Authorized!'
     });
   } else {
-    userService.getById(req.userId).then(user => {
+    userService.getById(req.userId).then((user) => {
       res.status(200).json(_.omit(user.toJSON(), ['password']));
     }).catch(next);
   }

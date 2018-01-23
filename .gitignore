@@ -1,6 +1,7 @@
 node_modules
 angularjs-frontend/.tmp
 .idea
+.vscode
 
 # Logs
 logs
